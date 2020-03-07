@@ -1,4 +1,4 @@
-# React/Material UI demo app created using Python
+# React/Material-UI demo app created using Python
 
 This is a simple demo app that I used for learning purposes:
 1. To play around with the Transcrypt Python-to-JavaScript transpiler

@@ -133,4 +133,3 @@ class App(Component):
 
 
 render(App, None, 'root')
-
