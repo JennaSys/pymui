@@ -1,0 +1,11 @@
+*.pyc
+*.swp
+*.dat
+*.bak
+*.log
+.idea/
+venv/
+src/__target__
+build/
+node_modules/
+__pycache__

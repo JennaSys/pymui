@@ -1,0 +1,33 @@
+{
+  "name": "demo3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@material-ui/core": "^4.9.5",
+    "lodash": "^4.17.15",
+    "notistack": "^0.9.8",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-number-format": "^4.4.1"
+  },
+  "parcel-plugin-python": {
+    "command": "python3 -m transcrypt",
+    "arguments": [
+      "--nomin",
+      "--map",
+      "--verbose"
+    ]
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3",
+    "parcel-plugin-transcrypt": "^1.0.20"
+  },
+  "scripts": {
+    "start": "rm -r build/public; NODE_ENV=development parcel --log-level 4 --no-cache src/index.html --out-dir build",
+    "build": "NODE_ENV=production parcel build build/index.html --no-source-maps --out-dir build/public --public-url ./"
+  },
+  "keywords": [],
+  "author": "JennaSys",
+  "license": "ISC"
+}
