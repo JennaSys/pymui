@@ -3,7 +3,11 @@
 React = require('react')
 ReactDOM = require('react-dom')
 
+
 lodash = require('lodash')
+
+def deepcopy(obj):
+    return lodash._.cloneDeep(obj)
 
 
 # __pragma__('kwargs')
@@ -62,7 +66,3 @@ def render(root_class, props, container):
         )
 
     document.addEventListener("DOMContentLoaded", main)
-
-
-def deepcopy(obj):
-    return lodash._.cloneDeep(obj)

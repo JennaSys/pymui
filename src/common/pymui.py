@@ -1,5 +1,3 @@
-from common.pyreact import console_log
-
 MaterialUI = require('@material-ui/core')
 notistack = require('notistack')
 
