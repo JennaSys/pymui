@@ -134,12 +134,3 @@ class App(Component):
 
 render(App, None, 'root')
 
-# TODO: -better understand when and how to pass function for events
-# TODO: when to use event.preventDefault()
-# TODO: use classes to assign styles
-# TODO: know when to use MuiTheme vs withStyle vs inline
-# TODO: generify theme decorator
-# TODO: debounce
-# TODO: useCallback?  useEffect?
-# TODO: React.Fragment
-# TODO: React context
