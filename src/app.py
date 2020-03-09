@@ -2,9 +2,9 @@ from common.pyreact import Component, render, element, deepcopy
 from common.pymui import Box
 from materialTheme import withMaterialTheme
 
-from main.addCustomerForm import AddCustomer
-from main.editCustomerForm import EditCustomer
-from main.customerList import CustomerList
+from main.addCustomerForm import AddCustomerVu
+from main.editCustomerForm import EditCustomerVu
+from main.customerList import CustomerListVu
 
 from common.customer import Customer
 
@@ -102,7 +102,7 @@ class App(Component):
     def render(self):
         return (element(Box, {'key': 'app-main', 'className': 'App', 'maxWidth': '800px'},
                         element(Box, None,
-                                element(CustomerList, {
+                                element(CustomerListVu, {
                                     'customers': self.state['customers'],
                                     'deleteCustomer': self.deleteCustomer,
                                     'paidCustomer': self.paidCustomer,
@@ -115,7 +115,7 @@ class App(Component):
 
     def editMode(self):
         if self.state['editing']:
-            return (element(EditCustomer, {
+            return (element(EditCustomerVu, {
                 'fname': self.state['fname'],
                 'lname': self.state['lname'],
                 'amount': self.state['amount'],
@@ -123,7 +123,7 @@ class App(Component):
                 'onClick': self.updateCustomer,
             }))
         else:
-            return element(AddCustomer, {
+            return element(AddCustomerVu, {
                 'fname': self.state['fname'],
                 'lname': self.state['lname'],
                 'amount': self.state['amount'],

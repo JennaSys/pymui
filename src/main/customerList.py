@@ -17,7 +17,7 @@ def AltTheme(props):
     return el(MuiThemeProvider, {'theme': new_theme}, props.children)
 
 
-def CustomerVu(props):
+def CustomerRowVu(props):
     customer: Customer = props['customer']
 
     def onEdit():
@@ -53,16 +53,16 @@ def CustomerVu(props):
               )
 
 
-def ItemList(props):
+def CustomersVu(props):
     customers: [Customer] = props['customers']
 
     def customerToRow(customer: Customer):
-        return el(CustomerVu, {'key': customer.cust_id,
-                               'customer': customer,
-                               'editCustomer': props['editCustomer'],
-                               'deleteCustomer': props['deleteCustomer'],
-                               'paidCustomer': props['paidCustomer']
-                               })
+        return el(CustomerRowVu, {'key': customer.cust_id,
+                                  'customer': customer,
+                                  'editCustomer': props['editCustomer'],
+                                  'deleteCustomer': props['deleteCustomer'],
+                                  'paidCustomer': props['paidCustomer']
+                                  })
 
     if len(customers) > 0:
         return [customerToRow(cust) for cust in customers]
@@ -74,7 +74,7 @@ def ItemList(props):
                   )
 
 
-def CustomerList(props):
+def CustomerListVu(props):
     theme = useTheme()
 
     HeaderTableCell = styled(TableCell)({
@@ -93,7 +93,7 @@ def CustomerList(props):
                        ),
                     ),
                  el(TableBody, None,
-                    el(ItemList, props)
+                    el(CustomersVu, props)
                     ),
                  )
               )

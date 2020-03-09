@@ -6,17 +6,29 @@ class Customer:
         self.amount = amount
         self.status = status
 
-    def update(self, updates: dict):
-        new_customer = self.copy()
-        for key, val in updates.items():
-            setattr(new_customer, key, val)
-        return new_customer
-
-    def copy(self):
-        new_customer = Customer(self.cust_id, self.fname, self.lname, self.amount, self.status)
-        return new_customer
-
     def fullName(self):
         return ' '.join([self.fname, self.lname])
+
+    def copy(self):
+        return Customer(self.cust_id, self.fname, self.lname, self.amount, self.status)
+
+    def update(self, updates: dict):
+        new_object = self.copy()
+        try:
+            for key, val in updates.items():
+                if not hasattr(self, key):
+                    print(''.join(["ERROR: Attempted to update invalid attribute key '", key, "' in class '", self.__name__, "'"]))
+                    raise KeyError
+                setattr(new_object, key, val)
+            return new_object
+        except KeyError as e:
+            print(e)
+            return None
+
+    def _attributes(self):
+        return [attr for attr in dir(self) if not attr.startswith('__') and not callable(getattr(self, attr))]
+
+    def toDict(self):
+        return {attr: getattr(self, attr) for attr in self._attributes()}
 
 # customer = Customer(1,"Bob","Brady", 55.99, False)

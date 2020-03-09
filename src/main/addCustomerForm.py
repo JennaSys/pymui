@@ -4,7 +4,7 @@ from common.pymui import withSnackbar
 
 
 @withSnackbar
-def AddCustomer(props):
+def AddCustomerVu(props):
     # enqueueSnackbar, closeSnackbar = useSnackbar()
 
     def onAdd(event):

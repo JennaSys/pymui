@@ -2,7 +2,7 @@ from common.pyreact import element as el
 from common.pymui import Button, TextField, Box
 
 
-def EditCustomer(props):
+def EditCustomerVu(props):
     def onUpdate(event):
         props['onClick']('update', event)
 
