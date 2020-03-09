@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from common.pyreact import console_error
+
+from common.jsutils import console_error
 
 
 @dataclass
@@ -17,7 +18,8 @@ class Customer:
     def copy(self):
         return Customer(self.cust_id, self.fname, self.lname, self.amount, self.status)
 
-    def update(self, updates: dict):
+    def update(self, updates):
+        # return replace(self, **updates)
         new_object = self.copy()
         try:
             for key, val in updates.items():

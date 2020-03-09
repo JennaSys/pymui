@@ -4,12 +4,6 @@ React = require('react')
 ReactDOM = require('react-dom')
 
 
-lodash = require('lodash')
-
-def deepcopy(obj):
-    return lodash._.cloneDeep(obj)
-
-
 # __pragma__('kwargs')
 
 registered_components = {}
@@ -41,13 +35,6 @@ class Component(AbstractComponent, React.Component.prototype):
     def __init__(self, props):
         AbstractComponent.__init__(self)
         React.Component.apply(self, [props])
-
-
-def console_log(text):
-    console.log(text)
-
-def console_error(text):
-    console.error(text)
 
 
 def useState(initial_value):

@@ -1,4 +1,5 @@
-from common.pyreact import Component, render, element, deepcopy
+from common.pyreact import Component, render, element
+from common.jsutils import deepcopy
 from common.pymui import Box
 from materialTheme import withMaterialTheme
 
@@ -77,10 +78,8 @@ class App(Component):
             updated_fname = self.state['fname']
             updated_lname = self.state['lname']
             updated_amount = self.state['amount']
-            updated_customer = old_customer.update(
-                dict(fname=updated_fname, lname=updated_lname, amount=updated_amount))
-            customers = [updated_customer if customer.cust_id == old_customer.cust_id else customer for customer in
-                         customers]
+            updated_customer = old_customer.update(dict(fname=updated_fname, lname=updated_lname, amount=updated_amount))
+            customers = [updated_customer if customer.cust_id == old_customer.cust_id else customer for customer in customers]
 
         self.setState({'fname': '', 'lname': '', 'amount': '', 'customers': customers})
         self.setEditing(False)
@@ -91,8 +90,7 @@ class App(Component):
 
     def paidCustomer(self, current_cust: Customer):
         updated_current_cust = current_cust.update(dict(status=True))
-        customers = [updated_current_cust if customer.cust_id == current_cust.cust_id else customer for customer in
-                     self.state['customers']]
+        customers = [updated_current_cust if customer.cust_id == current_cust.cust_id else customer for customer in self.state['customers']]
         self.setState({'customers': customers})
 
     def editCustomer(self, customer: Customer):
