@@ -1,10 +1,10 @@
 # reference:  https://github.com/doconix/pyreact
 
+# __pragma__('kwargs')
+
 React = require('react')
 ReactDOM = require('react-dom')
 
-
-# __pragma__('kwargs')
 
 registered_components = {}
 

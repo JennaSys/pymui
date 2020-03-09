@@ -107,18 +107,17 @@ class App(Component):
 
     @withMaterialTheme
     def render(self):
-        return (element(Box, {'key': 'app-main', 'className': 'App', 'maxWidth': '800px'},
-                        element(Box, None,
-                                element(CustomerListVu, {
-                                    'customers': self.state['customers'],
-                                    'deleteCustomer': self.deleteCustomer,
-                                    'paidCustomer': self.paidCustomer,
-                                    'editCustomer': self.editCustomer,
-                                }),
-                                ),
-                        element(Box, {'display': 'flex', 'justifyContent': 'center'}, self.editMode())
-                        ),
-                )
+        return element(Box, {'key': 'app-main', 'className': 'App', 'maxWidth': '800px'},
+                       element(Box, None,
+                               element(CustomerListVu, {
+                                   'customers': self.state['customers'],
+                                   'deleteCustomer': self.deleteCustomer,
+                                   'paidCustomer': self.paidCustomer,
+                                   'editCustomer': self.editCustomer,
+                               }),
+                               ),
+                       element(Box, {'display': 'flex', 'justifyContent': 'center'}, self.editMode())
+                       ),
 
     def editMode(self):
         if self.state['editing']:
