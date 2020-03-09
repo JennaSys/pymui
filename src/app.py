@@ -46,7 +46,13 @@ class App(Component):
 
         try:
             new_id = getNextId()
-            customer: Customer = Customer(new_id, self.state['fname'], self.state['lname'], self.state['amount'], self.state['status'])
+            customer: Customer = Customer(
+                cust_id=new_id,
+                fname=self.state['fname'],
+                lname=self.state['lname'],
+                amount=self.state['amount'],
+                status=self.state['status']
+            )
 
             new_customers = deepcopy(self.state['customers'])
             new_customers.append(customer)
@@ -71,8 +77,10 @@ class App(Component):
             updated_fname = self.state['fname']
             updated_lname = self.state['lname']
             updated_amount = self.state['amount']
-            updated_customer = old_customer.update(dict(fname=updated_fname, lname=updated_lname, amount=updated_amount))
-            customers = [updated_customer if customer.cust_id == old_customer.cust_id else customer for customer in customers]
+            updated_customer = old_customer.update(
+                dict(fname=updated_fname, lname=updated_lname, amount=updated_amount))
+            customers = [updated_customer if customer.cust_id == old_customer.cust_id else customer for customer in
+                         customers]
 
         self.setState({'fname': '', 'lname': '', 'amount': '', 'customers': customers})
         self.setEditing(False)
@@ -83,7 +91,8 @@ class App(Component):
 
     def paidCustomer(self, current_cust: Customer):
         updated_current_cust = current_cust.update(dict(status=True))
-        customers = [updated_current_cust if customer.cust_id == current_cust.cust_id else customer for customer in self.state['customers']]
+        customers = [updated_current_cust if customer.cust_id == current_cust.cust_id else customer for customer in
+                     self.state['customers']]
         self.setState({'customers': customers})
 
     def editCustomer(self, customer: Customer):

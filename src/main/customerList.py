@@ -31,7 +31,7 @@ def CustomerRowVu(props):
 
     return el(TableRow, None,
               el(TableCell, None, customer.cust_id),
-              el(TableCell, None, customer.fullName()),
+              el(TableCell, None, customer.fullName),
               el(TableCell, None,
                  el(NumberFormat, {
                      'value': customer.amount,

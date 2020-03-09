@@ -10,6 +10,7 @@ class Customer:
     amount: float = 0
     status: bool = False
 
+    @property
     def fullName(self):
         return ' '.join([self.fname, self.lname])
 
