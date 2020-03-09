@@ -1,10 +1,14 @@
+from dataclasses import dataclass
+from common.pyreact import console_error
+
+
+@dataclass
 class Customer:
-    def __init__(self, cust_id: int = None, fname: str = '', lname: str = '', amount: float = 0, status: bool = False):
-        self.cust_id = cust_id
-        self.fname = fname
-        self.lname = lname
-        self.amount = amount
-        self.status = status
+    cust_id: int = None
+    fname: str = ''
+    lname: str = ''
+    amount: float = 0
+    status: bool = False
 
     def fullName(self):
         return ' '.join([self.fname, self.lname])
@@ -16,13 +20,13 @@ class Customer:
         new_object = self.copy()
         try:
             for key, val in updates.items():
-                if not hasattr(self, key):
-                    print(''.join(["ERROR: Attempted to update invalid attribute key '", key, "' in class '", self.__name__, "'"]))
-                    raise KeyError
-                setattr(new_object, key, val)
+                if hasattr(self, key):
+                    setattr(new_object, key, val)
+                else:
+                    raise (Exception(''.join(["ERROR: Attempted to update invalid attribute key '", key, "' in class '", self.__name__, "'"])))
             return new_object
-        except KeyError as e:
-            print(e)
+        except Exception as e:
+            console_error(str(e))
             return None
 
     def _attributes(self):

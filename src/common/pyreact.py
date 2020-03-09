@@ -46,6 +46,9 @@ class Component(AbstractComponent, React.Component.prototype):
 def console_log(text):
     console.log(text)
 
+def console_error(text):
+    console.error(text)
+
 
 def useState(initial_value):
     '''for React hooks'''
